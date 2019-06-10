@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wlj.mapper.ReportMapper">
+	<insert id="insertOneReport" parameterType="report">
+		insert into t_report values(default,#{name},#{age},#{sex},#{roomNumber},#{intime},#{outtime},#{allprice},#{address})
+	</insert>
+	<select id="selAllReport" resultType="report" parameterType="report">
+		select * from t_report
+	</select>
+	<delete id="deleteOneReport" parameterType="int">
+		delete from t_report where id=#{id}
+	</delete>
+  </mapper>

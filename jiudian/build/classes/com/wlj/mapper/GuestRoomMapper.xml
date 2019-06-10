@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wlj.pojo">
+  	<select id="selAll" resultType="GuestRoom">
+  		select * from t_guestroom
+  	</select>
+  	<delete id="deleteOne" parameterType="int">
+  		delete from t_guestroom where id=#{id}
+  	</delete>
+  	<insert id="insertOne" parameterType="GuestRoom">
+  		insert into t_guestroom values(default,#{roomNumber},#{daxiao},#{leixing},#{price},#{type},#{beizhu})
+  	</insert>
+  	<select id="selOne" resultType="GuestRoom" parameterType="int">
+  		select * from t_guestroom where id=#{id}
+  	</select>
+  	<update id="updateOne" parameterType="GuestRoom">
+  		update t_guestroom set roomNumber=#{roomNumber},daxiao=#{daxiao},leixing=#{leixing},price=#{price},type=#{type},beizhu=#{beizhu} where id=#{id}
+  	</update>
+  	<select id="selroomNumber" resultType="GuestRoom" parameterType="String">
+  		select * from t_guestroom where roomNumber=#{roomNumber}
+  	</select>
+  	<select id="selectByNumberTypy" resultType="GuestRoom" parameterType="GuestRoom">
+  		select * from t_guestroom where roomNumber=#{roomNumber} and type=#{type}
+  	</select>
+  	<update id="updateTypeById" parameterType="GuestRoom">
+  		update t_guestroom set type=#{type} where id=#{id}
+  	</update>
+  	<select id="selectByType" resultType="GuestRoom" parameterType="String">
+  		select * from t_guestroom where type=#{type}
+  	</select>
+  	<update id="updateTypeByRoomNumber" parameterType="GuestRoom">
+  		update t_guestroom set type=#{type} where roomNumber=#{roomNumber}
+  	</update>
+  </mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wlj.mapper.CheckOutMapper">
+	<select id="selectCheckOutAll" resultType="CheckOut">
+		select * from t_checkout
+	</select>
+	<insert id="insertCheckOutOne" parameterType="CheckOut">
+		insert into t_checkout values(default,#{name},#{roomNumber},#{outtime},#{price})
+	</insert>
+	<delete id="deleteOneCheckOut" parameterType="int">
+		delete from t_checkout where id=#{id}
+	</delete>
+  </mapper>

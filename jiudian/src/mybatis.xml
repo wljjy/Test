@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<settings>
+	<setting name="logImpl" value="LOG4J"/>
+</settings>
+	<typeAliases>
+	<!-- <typeAlias type="com.bjsxt.pojo.People" alias="people"/> -->
+	<package name="com.wlj.pojo"/>
+	</typeAliases>
+	<environments default="default">
+		<environment id="default">
+		<transactionManager type="JDBC"></transactionManager>
+		<dataSource type="POOLED">
+			<property name="driver" value="com.mysql.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://localhost:3306/jiudian?characterEncoding=utf-8"/>
+			<property name="username" value="root"/>
+			<property name="password" value="s123456"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<mapper resource="com/wlj/mapper/UserMapper.xml"/>
+	<mapper resource="com/wlj/mapper/GuestRoomMapper.xml"/>
+	<mapper resource="com/wlj/mapper/CustomerMapper.xml"/>
+	<mapper resource="com/wlj/mapper/CheckinMapper.xml"/>
+	<mapper resource="com/wlj/mapper/CheckOutMapper.xml"/>
+	<mapper resource="com/wlj/mapper/ReportMapper.xml"/>
+	</mappers>
+</configuration>

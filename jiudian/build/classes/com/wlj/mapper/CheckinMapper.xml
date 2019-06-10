@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wlj.mapper.CheckinMapper"><!--为log4j下的路径名 -->
+	<resultMap type="checkin" id="in">
+		<result column="nameid" property="nameid"/>
+		<result column="roomid" property="roomid"/>
+		<association property="customer" select="com.wlj.pojo.CustomerMapper.selectByid" column="nameid"></association>
+		<association property="room" select="com.wlj.pojo.selOne" column="roomid"></association>
+	</resultMap>
+	<select id="selectAll" resultMap="in">
+		select * from t_checkin order by intime
+	</select>
+	<insert id="insertOne" parameterType="checkin">
+		insert into t_checkin values(default,#{name},#{sex},#{roomNumber},#{intime},#{outtime},#{livetype},#{liveDay},#{allprice})
+	</insert>
+	<delete id="deleteOneCheckin" parameterType="int">
+		delete from t_checkin where id=#{id}
+	</delete>
+	<select id="selectOneCheckIn" resultType="checkin" parameterType="int">
+		select* from t_checkin where id=#{id}
+	</select>
+	<update id="updateOneCheckIn" parameterType="checkin">
+		update t_checkin set name=#{name},sex=#{sex},roomNumber=#{roomNumber},intime=#{intime},outtime=#{outtime},livetype=#{livetype},liveDay=#{liveDay},allprice=#{allprice} where id=#{id}
+	</update>
+  </mapper>
